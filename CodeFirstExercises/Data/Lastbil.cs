@@ -5,14 +5,11 @@ using System.Threading.Tasks;
 
 namespace CodeFirstExercises.Data
 {
-    public class Bil
+    public class Lastbil
     {
         public int Id { get; set; }
         public Manufacturer Manufacturer { get; set; }
-        public string Model { get; set; }
-        public int Year { get; set; }
-        public decimal Price { get; set; }
+        public int LoadVolumeKvm { get; set; }
         public string Regnummer { get; set; }
-        public bool HasRadio { get; set; }
     }
 }

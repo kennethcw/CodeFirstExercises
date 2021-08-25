@@ -4,14 +4,16 @@ using CodeFirstExercises.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodeFirstExercises.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210825101120_fix")]
+    partial class fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,15 +63,13 @@ namespace CodeFirstExercises.Migrations
                     b.Property<int>("LoadVolumeKvm")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ManufacturerId")
-                        .HasColumnType("int");
+                    b.Property<string>("Manufacturer")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Regnummer")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ManufacturerId");
 
                     b.ToTable("Lastbilar");
                 });
@@ -90,15 +90,6 @@ namespace CodeFirstExercises.Migrations
                 });
 
             modelBuilder.Entity("CodeFirstExercises.Data.Bil", b =>
-                {
-                    b.HasOne("CodeFirstExercises.Data.Manufacturer", "Manufacturer")
-                        .WithMany()
-                        .HasForeignKey("ManufacturerId");
-
-                    b.Navigation("Manufacturer");
-                });
-
-            modelBuilder.Entity("CodeFirstExercises.Data.Lastbil", b =>
                 {
                     b.HasOne("CodeFirstExercises.Data.Manufacturer", "Manufacturer")
                         .WithMany()

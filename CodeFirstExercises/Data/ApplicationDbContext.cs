@@ -15,5 +15,7 @@ namespace CodeFirstExercises.Data
         }
 
         public DbSet<Bil> Bilar { get; set; }
+        public DbSet<Lastbil> Lastbilar { get; set; }
+        public DbSet<Manufacturer> Manufacturers { get; set; }
     }
 }
